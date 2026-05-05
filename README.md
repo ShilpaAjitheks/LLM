@@ -34,15 +34,29 @@ Raw CSV → DataProcessor → (train/test split, tokenization) → DataLoaders
 
 Tested on [BBC News](https://www.kaggle.com/datasets/gpreda/bbc-news) (5 classes: business, entertainment, politics, sport, tech). Swap in any CSV with `text` and `label` columns.
 
-## Results
+---
 
-- **Val Accuracy:** 99.3%
-- **Val F1 (macro):** 99.3%
+## Key Results
 
-## Requirements
+- **Val Accuracy:** 
+- **Val F1 (macro):** 
 
+---
+
+## Setup & Installation
+
+### Requirements
+
+- Python 3.8+
+- GPU recommended (CUDA). CPU is supported but slow.
+
+### Install dependencies
+
+```bash
+pip install transformers datasets scikit-learn torch pandas openpyxl evaluate accelerate tqdm matplotlib seaborn
 ```
-torch, transformers, datasets, scikit-learn, pandas, matplotlib, seaborn
-```
+Or in Colab/Jupyter:
 
-GPU recommended. On CPU, lower `epochs` and `batch_size`.
+```python
+!pip install -q transformers datasets scikit-learn torch pandas openpyxl evaluate accelerate tqdm
+```
