@@ -92,3 +92,19 @@ cfg = Config(
 )
 pipeline = Pipeline(cfg).run()
 ```
+### Train on a class subset
+
+```python
+pipeline = Pipeline(cfg).run(allowed_classes=["sport", "business"])
+```
+
+### Inference on new text
+
+```python
+predictions = pipeline.predict([
+    "The quarterly revenue exceeded analyst expectations by 12%.",
+    "New data privacy regulations were signed into law yesterday.",
+])
+print(predictions)  # e.g. ['business', 'politics']
+```
+
