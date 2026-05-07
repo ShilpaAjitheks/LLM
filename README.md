@@ -60,3 +60,80 @@ Or in Colab/Jupyter:
 ```python
 !pip install -q transformers datasets scikit-learn torch pandas openpyxl evaluate accelerate tqdm
 ```
+### Dataset
+
+Download `bbc_news_full.csv` and place it in the working directory. The file must contain at minimum:
+- a text column (default: `text`)
+- a label column (default: `label_text`)
+
+---
+## Usage
+
+### Full pipeline (one call)
+
+```python
+from bert_multiclass_pipeline_final import Config, Pipeline
+
+cfg = Config()          # all defaults
+pipeline = Pipeline(cfg).run()
+```
+### Customize hyperparameters
+
+```python
+cfg = Config(
+    data_path="your_data.csv",
+    text_col="content",
+    label_col="category",
+    epochs=5,
+    batch_size=32,
+    learning_rate=3e-5,
+    optimizer="AdamW",          # AdamW | RMSprop | Adagrad | Adadelta
+    lr_scheduler="cosine",      # linear | cosine | polynomial | exponential
+)
+pipeline = Pipeline(cfg).run()
+```
+### Train on a class subset
+
+```python
+pipeline = Pipeline(cfg).run(allowed_classes=["sport", "business"])
+```
+
+### Inference on new text
+
+```python
+predictions = pipeline.predict([
+    "The quarterly revenue exceeded analyst expectations by 12%.",
+    "New data privacy regulations were signed into law yesterday.",
+])
+print(predictions)  # e.g. ['business', 'politics']
+```
+### Visualize results
+
+```python
+from bert_multiclass_pipeline_final import Visualiser
+
+viz = Visualiser(pipeline)
+viz.plot_all()              # 3-panel: loss, metrics, confusion matrix
+viz.plot_loss()
+viz.plot_metrics()
+viz.plot_confusion_matrix()
+```
+
+---
+
+## Output Artifacts
+
+After a successful run, the following are saved to `bert_multiclass_model/` (configurable via `Config.save_dir`):
+
+```
+bert_multiclass_model/
+├── config.json
+├── model.safetensors
+├── tokenizer_config.json
+├── vocab.txt
+├── label_encoder.pkl
+└── classification_report.txt
+
+bert_multiclass_model.zip   ← ready for download / deployment
+```
+
