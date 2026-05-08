@@ -137,3 +137,9 @@ bert_multiclass_model/
 bert_multiclass_model.zip   ← ready for download / deployment
 ```
 
+## Notes
+
+- **Swap backbone:** Any HuggingFace encoder works — `roberta-base`, `distilbert-base-cased`, `albert-base-v2`, etc.
+- **Reproducibility:** Seed is fixed at `0` for `torch`, `numpy`, and `train_test_split`.
+- **Access internals:** `pipeline.report`, `pipeline.trainer.model`, `pipeline.data_processor.class_names`
+- **GPU:** Automatically detected via `torch.cuda.is_available()`.
