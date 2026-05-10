@@ -1,4 +1,7 @@
 # LLM Project....
+<p align="center">
+  <img src="text_classification_cover_art.svg" alt="Text Classification Cover" width="100%"/>
+</p>
 
 # BERT Multi-Class Text Classification Pipeline
 
