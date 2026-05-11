@@ -25,6 +25,10 @@ The pipeline is decomposed into five single-responsibility classes:
 | `Pipeline` | Orchestrates all 6 steps via a single `.run()` call |
 | `Visualiser` | Loss curves, validation metrics, and confusion matrix plots from a trained `Pipeline` |
 
+<p align="center">
+  <img src="bert_pipeline_readme_banner_v2.svg" alt="Text Classification Cover" width="100%"/>
+</p>
+
 **Training flow:**
 
 ```
