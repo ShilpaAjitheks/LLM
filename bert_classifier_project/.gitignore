@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+classyenv/
+
+# project artefacts
+bert_multiclass_model/
+bert_multiclass_model.zip
+training_results.png
+*.pkl
+
+# data
+*.csv
+*.xlsx
+
+.ipynb_checkpoints/
+.DS_Store
